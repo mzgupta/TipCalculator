@@ -52,7 +52,8 @@ public class CalculatorActivity extends Activity {
 
 	private float getTipFraction(int id) {
 		float tipFraction=0F;
-		//resetColor();
+		resetColor(id);
+		
 		switch (id) {
 		case R.id.btnTip10:
 			tipFraction = 0.1F;
@@ -69,13 +70,17 @@ public class CalculatorActivity extends Activity {
 		return tipFraction;
 	}
 
-	private void resetColor() {
+	private void resetColor(int id) {
 		Button btnTip10 = (Button) findViewById(R.id.btnTip10);
 		Button btnTip15 = (Button) findViewById(R.id.btnTip15);
 		Button btnTip20 = (Button) findViewById(R.id.btnTip20);
 		
-		btnTip10.setBackgroundColor(Color.BLUE);
-		btnTip15.setBackgroundColor(Color.BLUE);
-		btnTip20.setBackgroundColor(Color.BLUE);
+		btnTip10.setTextColor(Color.BLACK);
+		btnTip15.setTextColor(Color.BLACK);
+		btnTip20.setTextColor(Color.BLACK);
+		
+		Button btn = (Button) findViewById(id);
+		btn.setTextColor(Color.YELLOW);
+
 	}
 }
