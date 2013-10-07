@@ -78,10 +78,11 @@ public class CalculatorActivity extends Activity {
 			return;
 		}
 		TextView tipAmountView = (TextView) findViewById(R.id.tvLabel);
-
+		TextView tipTotalView = (TextView) findViewById(R.id.tvTotal);
 		float tipAmount = tipFraction * amount;
 
 		tipAmountView.setText("Tip is:       $" + tipAmount);
+		tipTotalView.setText("Total is:       $" + (tipAmount+amount));
 	}
 
 	private float getTipFraction() {
