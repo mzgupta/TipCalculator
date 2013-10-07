@@ -30,7 +30,14 @@ public class CalculatorActivity extends Activity {
 		
 		EditText etAmountText = (EditText) findViewById(R.id.etAmount);
 		
-		Float amount = Float.parseFloat(etAmountText.getText().toString());
+		String value = etAmountText.getText().toString();
+		
+		if (value == null ||  value.equals("") || value.length() == 0){
+			etAmountText.setText("0");
+			value = "0";
+		}
+		
+		Float amount = Float.parseFloat(value);
 		
 		if (amount == null){
 			return;
