@@ -3,12 +3,13 @@ package com.github.mzgupta.tipcalculator;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CalculatorActivity extends Activity {
 
@@ -16,6 +17,30 @@ public class CalculatorActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
+		final CalculatorActivity calculatorActivity=this;
+		EditText etAmountText = (EditText) findViewById(R.id.etAmount);
+		etAmountText.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				calculatorActivity.resetColor();
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	@Override
@@ -52,8 +77,10 @@ public class CalculatorActivity extends Activity {
 
 	private float getTipFraction(int id) {
 		float tipFraction=0F;
-		resetColor(id);
-		
+		resetColor();
+		Button btn = (Button) findViewById(id);
+		btn.setTextColor(Color.YELLOW);
+
 		switch (id) {
 		case R.id.btnTip10:
 			tipFraction = 0.1F;
@@ -70,7 +97,7 @@ public class CalculatorActivity extends Activity {
 		return tipFraction;
 	}
 
-	private void resetColor(int id) {
+	private void resetColor() {
 		Button btnTip10 = (Button) findViewById(R.id.btnTip10);
 		Button btnTip15 = (Button) findViewById(R.id.btnTip15);
 		Button btnTip20 = (Button) findViewById(R.id.btnTip20);
@@ -79,8 +106,6 @@ public class CalculatorActivity extends Activity {
 		btnTip15.setTextColor(Color.BLACK);
 		btnTip20.setTextColor(Color.BLACK);
 		
-		Button btn = (Button) findViewById(id);
-		btn.setTextColor(Color.YELLOW);
 
 	}
 }

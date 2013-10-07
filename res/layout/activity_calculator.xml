@@ -15,8 +15,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="numberDecimal"
-        android:text="0" >
+        android:hint="Enter the amout"
+        android:inputType="numberDecimal" >
+
         <requestFocus />
     </EditText>
 
